@@ -10,6 +10,11 @@
 
 ![image|200](https://github.com/TarekMohammedgg/Programming/assets/92824068/12bc4241-fa9e-49d2-9dc3-0bdaaff69773)
 
----
+----
+## Simple User Profile View : 
+
+![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/e84d8fa8-fd1b-4f99-8465-0de7797a4cbb)
+
+----
 Follow Me : 
 Linkedin : https://www.linkedin.com/in/tarek-mohammad-0436b2222/
