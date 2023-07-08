@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-class CoustomTextField extends StatelessWidget {
-  const CoustomTextField({super.key});
+class CustomTextField extends StatelessWidget {
+  final String labelText;
+  final int lines  ;
+  const CustomTextField({super.key, required this.labelText, this.lines =1 });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
         cursorColor: Colors.lightBlue,
+        maxLines: lines,
         decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          // hintText: "Title", // Appear when either enable mode or focused mode 
           hintStyle: const TextStyle(color: Colors.lightBlue),
           border: buildBorder(),
           enabledBorder: buildBorder(),
-          focusedBorder: buildBorder() , 
-          labelText: "Title" , // Appear when it enable mode enough 
+          focusedBorder: buildBorder(),
+          labelText: labelText,
         ));
   }
 
