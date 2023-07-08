@@ -15,7 +15,7 @@ class RoomCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           fullscreenDialog: true, builder: (_) => RoomStream(room: room))),
-      child:  Card(
+      child: Card(
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(25))),
           child: Padding(

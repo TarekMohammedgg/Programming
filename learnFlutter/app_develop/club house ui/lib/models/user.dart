@@ -9,6 +9,4 @@ const User ({
    required this .firstName , 
   required this.lastName , 
   required this.imageURL
-}) ; 
-
-}
+}) ; }
