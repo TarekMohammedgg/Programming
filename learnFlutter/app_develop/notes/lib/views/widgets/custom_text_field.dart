@@ -8,18 +8,18 @@ class CoustomTextField extends StatelessWidget {
     return TextField(
         cursorColor: Colors.lightBlue,
         decoration: InputDecoration(
-           floatingLabelBehavior: FloatingLabelBehavior.never , 
-            hintText: "Title",
-            hintStyle: const TextStyle(color: Colors.lightBlue),
-            border: buildBorder(),
-            enabledBorder: buildBorder(),
-            focusedBorder: , 
-           ));
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          // hintText: "Title", // Appear when either enable mode or focused mode 
+          hintStyle: const TextStyle(color: Colors.lightBlue),
+          border: buildBorder(),
+          enabledBorder: buildBorder(),
+          focusedBorder: buildBorder() , 
+          labelText: "Title" , // Appear when it enable mode enough 
+        ));
   }
 
   OutlineInputBorder buildBorder() {
     return OutlineInputBorder(
-      
       borderRadius: BorderRadius.circular(8),
       borderSide: const BorderSide(color: Colors.white),
     );
