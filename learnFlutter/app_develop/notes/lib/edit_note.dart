@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes/views/widgets/custom_app_bar.dart';
 import 'package:notes/views/widgets/custom_text_field.dart';
 
+
 class EditNote extends StatelessWidget {
   const EditNote({super.key});
 
@@ -42,3 +43,5 @@ class EditNote extends StatelessWidget {
     ));
   }
 }
+
+
