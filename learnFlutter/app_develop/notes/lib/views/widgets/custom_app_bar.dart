@@ -8,7 +8,13 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+
+      children: [
+        const SizedBox(
+      height: 10 ,
+    ) , 
+    Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
@@ -20,6 +26,9 @@ class CustomAppBar extends StatelessWidget {
 
         CustomSearchIcon(icon: icon),
       ],
-    );
+    )
+      ],
+    )
+    ;
   }
 }
