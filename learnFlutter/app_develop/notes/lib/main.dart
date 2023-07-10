@@ -3,10 +3,13 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:notes/constants.dart';
 import 'package:notes/views/notes_view.dart';
 
+import 'models/note_model.dart';
+
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNoteBox);
-  runApp(const MyApp ());
+  Hive.registerAdapter(NoteModelAdapter());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp (
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: const NotesView(),
