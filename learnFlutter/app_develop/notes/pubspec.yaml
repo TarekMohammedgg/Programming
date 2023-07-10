@@ -29,6 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   awesome_icons: ^1.1.0
+  bloc: ^8.1.2
+  flutter_bloc: ^8.0.0
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
