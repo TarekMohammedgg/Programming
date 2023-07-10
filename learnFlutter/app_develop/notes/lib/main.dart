@@ -6,7 +6,7 @@ import 'package:notes/views/notes_view.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNoteBox);
-  runApp(const MyApp());
+  runApp(const MyApp ());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp (
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: const NotesView(),
