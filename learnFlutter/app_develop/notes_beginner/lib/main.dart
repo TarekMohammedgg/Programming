@@ -15,6 +15,6 @@ class MyApp extends StatelessWidget {
             primaryColor: const Color(0xff2E5984),
             scaffoldBackgroundColor: const Color(0xff2E5984)),
         debugShowCheckedModeBanner: false,
-        home: const NoteView());
+        home: const  NoteView());
   }
 }
