@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_beginner/view/widget/custom_note_appbar.dart';
 import 'package:date_format/date_format.dart';
@@ -21,7 +24,7 @@ class _NoteViewState extends State<NoteView> {
             showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                      backgroundColor: Colors.yellow[200],
+                      backgroundColor: const Color(0xff2E5984),
                       title: const Text("Add Note"),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -54,6 +57,8 @@ class _NoteViewState extends State<NoteView> {
                             setState(() {
                               ktodo.add(input);
                               ktodo2.add(input2);
+                              input = " ";
+                              input2 = " ";
                             });
                             Navigator.of(context).pop();
                           },
@@ -65,7 +70,7 @@ class _NoteViewState extends State<NoteView> {
                       ],
                     ));
           },
-          backgroundColor: Colors.yellow[200],
+          backgroundColor: Colors.lightBlue,
           foregroundColor: Colors.black,
           child: const Icon(Icons.add),
         ),
@@ -73,6 +78,10 @@ class _NoteViewState extends State<NoteView> {
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
             const CustomNoteAppBar(),
+            const Divider(
+              color: Colors.white,
+              thickness: .4,
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: ktodo.length,
@@ -86,10 +95,6 @@ class _NoteViewState extends State<NoteView> {
                           color: Colors.red,
                           child: const Icon(Icons.cancel),
                         ),
-                        secondaryBackground: Container(
-                          color: Colors.green,
-                          child: const Icon(Icons.check),
-                        ),
                         onDismissed: (DismissDirection direction) {
                           if (direction == DismissDirection.startToEnd) {
                             ScaffoldMessenger.of(context)
@@ -98,7 +103,7 @@ class _NoteViewState extends State<NoteView> {
                             ));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("is saved ")));
+                                const SnackBar(content: Text("Archived ")));
                           }
 
                           setState(() {
@@ -108,13 +113,28 @@ class _NoteViewState extends State<NoteView> {
                         },
                         child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.yellow[200],
+                                color: Colors.accents[
+                                    Random().nextInt(Colors.primaries.length)],
                                 borderRadius: BorderRadius.circular(12)),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 8.0),
                               child: Column(
                                 children: [
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(14),
+                                        child: Image.network(
+                                          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
+                                          width: 50,
+                                          height: 50,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   ListTile(
                                     // contentPadding: EdgeInsets.zero,
                                     title: Padding(
@@ -123,7 +143,7 @@ class _NoteViewState extends State<NoteView> {
                                       child: Text(
                                         ktodo[index],
                                         style: const TextStyle(
-                                            fontSize: 40,
+                                            fontSize: 28,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
@@ -133,30 +153,31 @@ class _NoteViewState extends State<NoteView> {
                                       child: Text(
                                         ktodo2[index],
                                         style: const TextStyle(
-                                          fontSize: 40,
+                                          fontSize: 18,
                                         ),
                                       ),
                                     ),
-
+                                  
                                     trailing: IconButton(
                                         onPressed: () {
                                           setState(() {
+                                            ktodo.removeAt(index);
                                             ktodo2.removeAt(index);
                                           });
                                         },
                                         icon:
                                             const Icon(FontAwesomeIcons.trash)),
-                                  ),
-                                  Padding(
+                                  ), Padding(
                                       padding: const EdgeInsets.only(
                                           left: 150, bottom: 10),
                                       child: Text(
-                                          "Edited in: ${DateTime.now().day} ,${formatDate(DateTime.now(), [
+                                          "Edited in: ${DateTime.now().day},${formatDate(DateTime.now(), [
                                                 MM
                                               ])} ,${DateTime.now().year}",
                                           style: const TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                           )))
+                                 
                                 ],
                               ),
                             )),

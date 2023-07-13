@@ -6,18 +6,13 @@ class CustomNoteAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          "NoTes APP",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 5,
-          ),
-        ),
+        Text("Notes",
+            style: TextStyle(
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
       ],
     );
   }
