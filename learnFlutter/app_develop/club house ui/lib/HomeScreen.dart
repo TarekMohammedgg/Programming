@@ -1,3 +1,4 @@
+
 import 'package:club_house_app/profile.dart';
 import 'package:club_house_app/widget/user_profile.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,8 +24,10 @@ class BarOfApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return NestedScrollView(
         headerSliverBuilder: (BuildContext context, innerBoxIsScrolled) {
+          
           return <Widget>[
             SliverAppBar(
+              floating: true ,
               elevation: 0,
               leading: IconButton(
                   icon: const Icon(Icons.search, size: 28), onPressed: () {}),

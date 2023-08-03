@@ -14,7 +14,10 @@ class NoteView extends StatefulWidget {
 }
 
 class _NoteViewState extends State<NoteView> {
+  final TextEditingController _textTitle = TextEditingController();
+  final TextEditingController _textSubTitle = TextEditingController();
   final NoteData object = NoteData(titleNote: " ", subtitleNote: " ");
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,6 +36,7 @@ class _NoteViewState extends State<NoteView> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextField(
+                          controller: _textTitle,
                           decoration: const InputDecoration(
                             hintText: "Enter your Note ",
                           ),
@@ -41,6 +45,7 @@ class _NoteViewState extends State<NoteView> {
                           },
                         ),
                         TextField(
+                          controller: _textSubTitle,
                           minLines: 4,
                           maxLines: 100,
                           decoration: const InputDecoration(
@@ -56,14 +61,25 @@ class _NoteViewState extends State<NoteView> {
                       TextButton(
                         onPressed: () {
                           setState(() {
-                            notes.add(NoteData(
+                           
+                            if (_textTitle.text.isEmpty) {
+                              return;
+                            }
+                            if (_textSubTitle.text.isEmpty) {
+                              return;
+                            }
+                             notes.add(NoteData(
                                 titleNote: title, subtitleNote: subtitle));
                           });
                           Navigator.of(context).pop();
                         },
                         child: const Text(
                           "ADD",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.black
+                          
+                            
+                          ),
+                        
                         ),
                       )
                     ],
@@ -77,7 +93,9 @@ class _NoteViewState extends State<NoteView> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
-            const CustomNoteAppBar(),
+            const CustomNoteAppBar(
+              textnote: "Notes",
+            ),
             const Divider(
               color: Colors.white,
               thickness: .4,
@@ -107,31 +125,132 @@ class _NoteViewState extends State<NoteView> {
                       ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("Deleted")));
                     },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14)),
-                      color: Colors
-                          .primaries[Random().nextInt(Colors.primaries.length)],
-                      child: ListTile(
-                        title: Text(
-                          notes[index].titleNote,
-                          style: const TextStyle(fontSize: 24),
+                    child: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              String title = " ";
+                              String subtitle = " ";
+                              return AlertDialog(
+                                backgroundColor: const Color(0xff2E5984),
+                                title: const Text("Add Note"),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          // notes[index].titleNote,
+                                          _textTitle.text,
+                                          style: const TextStyle(fontSize: 24),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: _textTitle,
+                                      decoration: const InputDecoration(
+                                        hintText: "Edit on your note  ",
+                                      ),
+                                      onChanged: (String value) {
+                                        title = value;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          // notes[index].subtitleNote,
+                                          _textSubTitle.text,
+                                          style: const TextStyle(fontSize: 24),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: _textSubTitle,
+                                      minLines: 4,
+                                      maxLines: 100,
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter your Note ",
+                                      ),
+                                      onChanged: (value) {
+                                        subtitle = value;
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        if (title.isEmpty) {
+                                          title = _textTitle.text;
+                                        } else if (subtitle.isEmpty) {
+                                          subtitle = _textSubTitle.text;
+                                        } else {
+                                          title = _textTitle.text;
+                                          subtitle = _textSubTitle.text;
+                                        }
+                                        notes[index] = NoteData(
+                                            titleNote: title,
+                                            subtitleNote: subtitle);
+
+                                        if (title == _textTitle.text) {
+                                          _textTitle.clear();
+                                        }
+                                        if (subtitle == _textSubTitle.text) {
+                                          _textSubTitle.clear();
+                                        }
+                                      });
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text(
+                                      "Update",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  )
+                                ],
+                              );
+                            });
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14)),
+                        color: Colors.primaries[
+                            Random().nextInt(Colors.primaries.length)],
+                        child: ListTile(
+                          title: Text(
+                            notes[index].titleNote,
+                            style: const TextStyle(fontSize: 24),
+                          ),
+                          subtitle: Text(
+                            notes[index].subtitleNote,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          trailing: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  notes.removeAt(index);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Deleted"),
+                                  ));
+                                });
+                              },
+                              icon: const Icon(Icons.delete_forever)),
                         ),
-                        subtitle: Text(
-                          notes[index].subtitleNote,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        trailing: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                notes.removeAt(index);
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
-                                  content: Text("Deleted"),
-                                ));
-                              });
-                            },
-                            icon: const Icon(Icons.delete_forever)),
                       ),
                     ),
                   );

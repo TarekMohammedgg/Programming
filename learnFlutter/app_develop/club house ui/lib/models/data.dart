@@ -2,7 +2,7 @@ import 'package:club_house_app/models/room.dart';
 import 'package:club_house_app/models/user.dart';
 
 const User currentUser =
-    User(firstName: "Asem", lastName: "Saafan", imageURL: "images/avatar.jpeg");
+    User(firstName: "Asem", lastName: "Saafan", imageURL: "https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80");
 
 const List<User> allUsers = [
   User(

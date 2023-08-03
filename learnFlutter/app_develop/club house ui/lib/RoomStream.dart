@@ -20,6 +20,7 @@ class RoomStream extends StatelessWidget {
           headerSliverBuilder: (BuildContext context, innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+                floating: true,
                 elevation: 0,
                 leadingWidth: 130,
                 leading: TextButton.icon(
