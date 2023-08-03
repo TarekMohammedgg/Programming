@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
               floatingActionButton: FloatingActionButton(onPressed: (){}  , 
                 shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20) ),
                 child:
-                 const Icon(Icons.add) , 
+                 const Icon(Icons.message) , 
 
               
                ),
