@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
-
+import 'package:whats_app_ui/view/calls_view.dart';
 import 'package:whats_app_ui/view/chat_view.dart';
-
+import 'package:whats_app_ui/widgets/custom_app_bar.dart';
 
 void main() {
   runApp(const HomePage());
@@ -15,87 +13,67 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            brightness: Brightness.dark, canvasColor: const Color(0xff232D36)),
-        home:  DefaultTabController(
-          length: 3,
-          child: SafeArea(
-            child: Scaffold(
-              body: TabBarView(children: [
-                CustomScrollView(
-                  slivers: [
-                     SliverAppBar(
-                  
-                      backgroundColor: const Color(0xff232D36) , 
-                      floating: true,
-                     pinned: true ,
-                     title: const Text(
-              "WhatsApp",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff6E7780),
-                  fontFamily: "ComicNeue-Italic",
-                  fontStyle: FontStyle.italic , fontWeight: FontWeight.bold),
-            ),
-                      actions: [
-              IconButton(
-                  onPressed: (){},
-                  icon:  const Icon(
-                    Icons.photo_camera,
-                    color: Color(0xff6E7780),
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.search,
-                    color: Color(0xff6E7780),
-                  )),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: Color(0xff6E7780),
-                ),
-              ) , 
-            
-            ],
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          brightness: Brightness.dark, canvasColor: const Color(0xff232D36)),
+      home: const MyHomePage(),
+    );
+  }
+}
 
-                      bottom: const TabBar(
-                        // isScrollable: true,
-                        labelColor: Color(0xff115E58),
-                        unselectedLabelColor: Color(0xff47525A),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        tabs: [
-                          Tab(text: "Chats"),
-                          Tab(
-                            text: "Updates",
-                          ),
-                          Tab(text: "Calls"),
-                        ],
-                      ),
-                      expandedHeight: 120,
-                    ),
-                     
-                    const ChatView() , 
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const DefaultTabController(
+      length: 4,
+      child: SafeArea(
+          child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            CustomAppbar(),
+            SliverFillRemaining(
+                child: TabBarView(children: <Widget>[
                   
-                  ],
-                ),
+                  
+                  // ChatView(),
+                  
+                  //  CallsView() ,
+                    UpdatesView() , 
+
+                   
                 
-              ]),
-              floatingActionButton: FloatingActionButton(onPressed: (){}  , 
-                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20) ),
-                child:
-                 const Icon(Icons.message) , 
-
-              
-               ),
-            ),
-          ),
-        ));
+                
+                
+                ])),
+          ],
+        ),
+      )),
+    );
   }
 }
 
 
+class UpdatesView extends StatelessWidget {
+  const UpdatesView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CustomScrollView(
+        slivers: [
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(children: [
+                  Text("Status" , style: TextStyle(color: Colors.white , fontSize: 24 , fontFamily: "ComicNeue-Italic" ),)
+                ],),
+              ),
+            )
 
 
+        ],
+    ); 
+  }
+}
