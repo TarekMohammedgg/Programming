@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whats_app_ui/view/calls_view.dart';
 import 'package:whats_app_ui/view/chat_view.dart';
+import 'package:whats_app_ui/view/updates_view.dart';
 import 'package:whats_app_ui/widgets/custom_app_bar.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const DefaultTabController(
-      length: 4,
+      length: 3,
       child: SafeArea(
           child: Scaffold(
         body: CustomScrollView(
@@ -35,45 +36,13 @@ class MyHomePage extends StatelessWidget {
             CustomAppbar(),
             SliverFillRemaining(
                 child: TabBarView(children: <Widget>[
-                  
-                  
-                  // ChatView(),
-                  
-                  //  CallsView() ,
-                    UpdatesView() , 
-
-                   
-                
-                
-                
-                ])),
+              ChatView(),
+              UpdatesView(),
+              CallsView(),
+            ])),
           ],
         ),
       )),
     );
-  }
-}
-
-
-class UpdatesView extends StatelessWidget {
-  const UpdatesView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CustomScrollView(
-        slivers: [
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(children: [
-                  Text("Status" , style: TextStyle(color: Colors.white , fontSize: 24 , fontFamily: "ComicNeue-Italic" ),)
-                ],),
-              ),
-            )
-
-
-        ],
-    ); 
   }
 }

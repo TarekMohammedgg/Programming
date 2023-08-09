@@ -44,34 +44,37 @@ class _CallsViewState extends State<CallsView> {
           ),
         ),
         SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) => ListTile(
-                  leading: const CustomAvatar(),
-                  title: Text(names[Random().nextInt(names.length)]),
-                  subtitle: Text.rich(TextSpan(children: [
-                     WidgetSpan(
-                        child: Icon(
-                      icons, 
-                      color: colors,
-                    )),
-                    TextSpan(text: DateFormat('MMMM d , h:mm a').format(DateTime.now()))
-                  ])),
-                  trailing: IconButton(
-                    onPressed: () {
-                        setState(() {
-                          icons = Icons.call_received ; 
-                          if (icons== Icons.call_received){
-                            colors = Colors.red ; 
-                          }
-                          else {
-                            colors= Colors.green ; 
-                          }
-                        });
-
-                    },
-                    icon: const Icon(Icons.phone),
-                    color: const Color.fromARGB(255, 27, 132, 123),
+            delegate: SliverChildBuilderDelegate((context, index) => GestureDetector(
+              onTap: (){},
+              child: ListTile(
+                    leading: const CustomAvatar(),
+                    title: Text(names[Random().nextInt(names.length)]),
+                    subtitle: Text.rich(TextSpan(children: [
+                       WidgetSpan(
+                          child: Icon(
+                        icons, 
+                        color: colors,
+                      )),
+                      TextSpan(text: DateFormat('MMMM d , h:mm a').format(DateTime.now()))
+                    ])),
+                    trailing: IconButton(
+                      onPressed: () {
+                          setState(() {
+                            icons = Icons.call_received ; 
+                            if (icons== Icons.call_received){
+                              colors = Colors.red ; 
+                            }
+                            else {
+                              colors= Colors.green ; 
+                            }
+                          });
+            
+                      },
+                      icon: const Icon(Icons.phone),
+                      color: const Color.fromARGB(255, 27, 132, 123),
+                    ),
                   ),
-                )))
+            )))
       ],
     );
   }
