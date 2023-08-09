@@ -19,6 +19,15 @@ samples, guidance on mobile development, and a full API reference.
 ## Chat view 
 ![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/e492e950-5500-4896-8674-9bab2ffc67ed)
 -----
+## updates view 
+![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/d45236b8-f567-47e9-a9fe-781a8918b606)
+
+![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/148da842-8a62-4dce-9bcd-1a9ac238ed5a)
+
+![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/c44bba50-585a-4fdc-9861-2e288af96053)
+
+
+---
 ## Calls view 
 ![image](https://github.com/TarekMohammedgg/Programming/assets/92824068/4ec4317a-fca4-4cc4-844f-d4782f468376)
 
