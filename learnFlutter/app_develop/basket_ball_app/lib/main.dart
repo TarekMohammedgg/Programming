@@ -1,3 +1,4 @@
+import 'package:basket_ball_app/view/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false ,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.orange[300],
+          title: const Text("Points Counter"),
+        ),
+        body: const HomePage(),
+      ),
+    );
   }
 }
