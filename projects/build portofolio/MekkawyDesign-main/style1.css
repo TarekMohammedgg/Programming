@@ -1,0 +1,74 @@
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .pricing-table {
+        display: flex;
+        justify-content: center;
+    }
+    .plan {
+        flex: 1;
+        text-align: center;
+        padding: 30px;
+        margin: 0 15px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .plan h3 {
+        font-size: 24px;
+        color: #333;
+    }
+    .plan .price {
+        font-size: 36px;
+        color: #007bff;
+        margin: 20px 0;
+    }
+    .number { 
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        padding: 16px;
+        margin:25px 58px ;
+        background: #007bff;
+        color: #f9f9f9;
+        text-align: center;
+        font-size: 25px;
+       
+    } 
+
+
+    
+    /* Customize for specific numbers */
+
+    
+    .plan ul {
+        list-style: none;
+        padding: 0;
+    }
+    .plan ul li {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    .plan .btn {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    .plan .btn:hover {
+        background-color: #0056b3;
+    }
